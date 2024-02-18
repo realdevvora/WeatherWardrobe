@@ -41,8 +41,11 @@ function App() {
   };
   
   return (
-    <div className="App WeatherWardrobeHomeP">
-      <h1 className='WeatherWardrobe'>WeatherWardrobe</h1>
+    <div className="App container">
+      <a href="/">
+      <img src="wwlogo.svg" className='logo' alt="" />
+      </a>
+      <h1 className='title'>WeatherWardrobe</h1>
       {!selectedLocation && <Searchbar data={data} onSelectLocation={handleSelectLocation} /> }{/* Pass onSelectLocation function to SearchBar */}
       {selectedLocation && <Prompt location={selectedLocation} />} {/* Pass selectedLocation state to Prompt */}
       {error && <p>Error: {error}</p>}

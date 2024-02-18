@@ -1,19 +1,46 @@
-/* App.css */
-
-.App {
-  text-align: center;
+@charset "UTF-8";
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-.WeatherWardrobe {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-align: center; /* Centering the h1 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-
-.Searchbar:focus {
-  outline: none; /* Removing the default focus outline */
-  border-color: dodgerblue; /* Changing border color on focus */
+.logo {
+    width: 100px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
-/* You can add more styles as needed */
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #000;
+    font-family: "Inder";
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 19.2px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .logo {
+        top: 10px;
+        left: 10px;
+    }
+
+    .title {
+        font-size: 48px;
+        letter-spacing: 9.6px;
+    }
+}

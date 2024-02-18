@@ -5,7 +5,6 @@ export default function Prompt({ location }) {
     const apiKey = import.meta.env.VITE_WEATHERWARDROBE;
     const searchText = location; // Example search text, replace with your actual search query
     const url1 = `http://dataservice.accuweather.com/locations/v1/cities/search?q=${searchText}&apikey=${apiKey}`;
-    const url2 = `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`;
     
     const [locationKey, setLocationKey] = useState("");
     const [weather, setWeather] = useState({});
@@ -33,7 +32,7 @@ export default function Prompt({ location }) {
         async function newCalls() {
             try {
                 if (locationKey) {
-                    const response = await fetch(url2, {
+                    const response = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`, {
                         mode: "cors",
                     });
                     if (!response.ok) {
@@ -68,7 +67,7 @@ export default function Prompt({ location }) {
     return (
         <>
             <h2>
-                It is currently {weather.weatherTemperature} ° C, {weather.weatherDescription}, {weather.hasPrecipitation ? <p>with precipitation</p>: <p>no precipitation</p>} in: {location}
+                It is currently {weather.weatherTemperature} ° C. {weather.weatherDescription}, {weather.hasPrecipitation ? <span className="bolded">with precipitation in {location}</span>: <span className="bolded">no precipitation in: {location}</span>}
             </h2>
             {weather && <Suggestions weather={weather} location={location}/>}
         </>

@@ -1,83 +1,62 @@
-/* Searchbar.css */
+.search--bar input {
+    display: flex;
+    font-size: 35px;
+    font-family: "Inria Serif";
+    width: 100%; /* Change width to 100% */
+    max-width: 400px; /* Limit maximum width */
+    height: 50px;
+    padding: 20px 15px; /* Adjust padding */
+    align-items: flex-start;
+    gap: 23px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    border: 0.7px solid rgba(0, 0, 0, 0.50);
+    background: #FFF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
 .search--bar {
-    position: relative;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    padding: 20px; /* Add padding */
 }
 
 .search--box {
     width: 100%;
     max-width: 300px;
+    justify-content: center;
+    align-items: center;
+
     padding: 10px;
     font-size: 1rem;
     border: 2px solid #ccc;
     border-radius: 5px;
-    transition: border-color 0.3s ease; /* Adding transition for border color */
-}
-
-.search--box:focus {
-    outline: none;
-    border-color: dodgerblue;
-}
-
-.dropdown {
-    position: absolute;
-    top: calc(100% + 5px); /* Position dropdown right below search bar */
-    left: 0;
-    width: 100%;
-    max-width: 300px;
-    background-color: #fff;
-    border: 2px solid #ccc;
-    border-top: none;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    animation: fadeIn 0.3s ease; /* Adding animation for dropdown appearance */
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    transition: border-color 0.3s ease;
 }
 
 .search--box--course {
-    justify-content: center;
     padding: 10px;
+    text-align: center;
     cursor: pointer;
-    position: relative;
-    /* Adjust position to appear directly below the search bar */
-    top: calc(100% + 5px);
-    left: 0;
-    width: 100%;
-    border-top: 1px solid #ccc; /* Add border-top to separate from search bar */
+    transition: transform 0.3s ease; 
 }
 
 .search--box--course:hover {
-    background-color: #f0f0f0;
+    transform: scale(1.05); /* Scale up slightly on hover */
 }
 
-.search--box--course::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1); /* Adding overlay */
-    opacity: 0;
-    transition: opacity 0.3s ease; /* Adding transition for overlay */
-}
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .search--bar input {
+        font-size: 20px; /* Decrease font size for smaller screens */
+        max-width: 300px; /* Adjust maximum width for smaller screens */
+        padding: 15px 10px; /* Adjust padding for smaller screens */
+    }
 
-.search--box--course:hover::before {
-    opacity: 1;
-}
-
-.no-results {
-    color: #fff; /* Setting text color to match background */
+    .search--box {
+        max-width: 250px; /* Adjust maximum width for smaller screens */
+    }
 }
