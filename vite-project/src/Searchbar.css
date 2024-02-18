@@ -1,0 +1,62 @@
+.search--bar input {
+    display: flex;
+    font-size: 35px;
+    font-family: "Inria Serif";
+    width: 100%; /* Change width to 100% */
+    max-width: 400px; /* Limit maximum width */
+    height: 50px;
+    padding: 20px 15px; /* Adjust padding */
+    align-items: flex-start;
+    gap: 23px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    border: 0.7px solid rgba(0, 0, 0, 0.50);
+    background: #FFF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search--bar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    padding: 20px; /* Add padding */
+}
+
+.search--box {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.search--box--course {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+}
+
+.search--box--course:hover {
+    transform: scale(1.05); /* Scale up slightly on hover */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .search--bar input {
+        font-size: 20px; /* Decrease font size for smaller screens */
+        max-width: 300px; /* Adjust maximum width for smaller screens */
+        padding: 15px 10px; /* Adjust padding for smaller screens */
+    }
+
+    .search--box {
+        max-width: 250px; /* Adjust maximum width for smaller screens */
+    }
+}

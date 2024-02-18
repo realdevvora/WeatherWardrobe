@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./Searchbar.css"
 
 const SearchBar = ({ data, onSelectLocation }) => {
   const [filteredData, setFilteredData] = useState([]);
@@ -43,19 +44,24 @@ const SearchBar = ({ data, onSelectLocation }) => {
         className="search--box"
       />
 
-      {showDropdown && (
-        <div className="dropdown">
-          {filteredData.length > 0 ? (
-            filteredData.map((entry, index) => (
-              <div className="search--box--course" key={index} onClick={() => handleClick(entry)}>
-                <p>{entry.merged_column}</p>
-              </div>
-            ))
-          ) : (
-            <p>No matching results</p>
-          )}
-        </div>
-      )}
+    {showDropdown && (
+        <div className="dropdown" style={{ maxHeight: "200px", overflowY: "auto" }}>
+          <div className="dropdown-content">
+              {filteredData.length > 0 ? (
+                  filteredData.map((entry, index) => (
+                      <div className="search--box--course" key={index} onClick={() => handleClick(entry)}>
+                          <p>{entry.merged_column}</p>
+                      </div>
+                  ))
+              ) : (
+                  <p>No matching results</p>
+              )}
+          </div>
+    </div>
+
+)}
+
+
     </div>
   );
 };
