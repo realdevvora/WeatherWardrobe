@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const SearchBar = ({ data }) => {
+const SearchBar = ({ data, onSelectLocation }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchInput, setSearchInput] = useState('');
@@ -14,6 +14,7 @@ const SearchBar = ({ data }) => {
   // Function to handle click on a filtered result
   const handleClick = (entry) => {
     setSearchInput('');
+    onSelectLocation(entry.merged_column); // Pass the selected location to the parent component
   };
 
   // Function to filter the dataset based on user input
@@ -24,7 +25,6 @@ const SearchBar = ({ data }) => {
       setShowDropdown(false);
       return;
     }
-    console.log(data)
     const filtered = data.filter((entry) => {
       const mergedTerms = entry.merged_column.toLowerCase().split(',').map(term => term.trim());
       return mergedTerms.some(term => term.includes(input));

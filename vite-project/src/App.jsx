@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Searchbar from './Searchbar';
+import Prompt from './Prompt'; // Assuming this is the correct import path for the Prompt component
 
 function App() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(''); // State to store the selected location
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,10 +33,17 @@ function App() {
   
     fetchData();
   }, []);
+
+  // Function to handle selecting a location
+  const handleSelectLocation = (location) => {
+    setSelectedLocation(location);
+  };
   
   return (
     <div className="App">
-      <Searchbar data={data} />
+      <h1>WeatherWardrobe</h1>
+      {!selectedLocation && <Searchbar data={data} onSelectLocation={handleSelectLocation} /> }{/* Pass onSelectLocation function to SearchBar */}
+      {selectedLocation && <Prompt location={selectedLocation} />} {/* Pass selectedLocation state to Prompt */}
       {error && <p>Error: {error}</p>}
     </div>
   );
