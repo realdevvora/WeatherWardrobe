@@ -1,0 +1,83 @@
+/* Searchbar.css */
+
+.search--bar {
+    position: relative;
+    width: 100%;
+}
+
+.search--box {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease; /* Adding transition for border color */
+}
+
+.search--box:focus {
+    outline: none;
+    border-color: dodgerblue;
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 5px); /* Position dropdown right below search bar */
+    left: 0;
+    width: 100%;
+    max-width: 300px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    animation: fadeIn 0.3s ease; /* Adding animation for dropdown appearance */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search--box--course {
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    /* Adjust position to appear directly below the search bar */
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #ccc; /* Add border-top to separate from search bar */
+}
+
+.search--box--course:hover {
+    background-color: #f0f0f0;
+}
+
+.search--box--course::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Adding overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Adding transition for overlay */
+}
+
+.search--box--course:hover::before {
+    opacity: 1;
+}
+
+.no-results {
+    color: #fff; /* Setting text color to match background */
+}

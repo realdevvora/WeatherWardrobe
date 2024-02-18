@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 export default function Suggestions({ weather, location }) {
+    const baseURL = import.meta.env.VITE_DOMAIN;
     const [suggestions, setSuggestions] = useState(null);
     
     useEffect(() => {
         async function fetchInfo() {
             if (weather && Object.keys(weather).length !== 0 && location && Object.keys(location).length !== 0) {
                 try {
-                    const response = await fetch('http://127.0.0.1:5000/obtainSuggestions/', {
+                    const response = await fetch(`${baseURL}/obtainSuggestions/`, {
                         method: 'POST',
                         mode: "cors",
                         headers: {
