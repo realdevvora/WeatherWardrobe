@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./Searchbar.css"
 
 const SearchBar = ({ data, onSelectLocation }) => {
   const [filteredData, setFilteredData] = useState([]);
