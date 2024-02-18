@@ -4,7 +4,7 @@ import Suggestions from "./Suggestions";
 export default function Prompt({ location }) {
     const apiKey = import.meta.env.VITE_WEATHERWARDROBE;
     const searchText = location; // Example search text, replace with your actual search query
-    const url = `http://dataservice.accuweather.com/locations/v1/cities/search?q=${searchText}&apikey=${apiKey}`;
+    const url1 = `http://dataservice.accuweather.com/locations/v1/cities/search?q=${searchText}&apikey=${apiKey}`;
     
     const [locationKey, setLocationKey] = useState("");
     const [weather, setWeather] = useState({});
@@ -12,7 +12,7 @@ export default function Prompt({ location }) {
     useEffect(() => {
         async function apiCalls() {
             try {
-                const response = await fetch(url, {
+                const response = await fetch(url1, {
                     mode: "cors",
                 });
                 if (!response.ok) {
@@ -67,7 +67,7 @@ export default function Prompt({ location }) {
     return (
         <>
             <h2>
-                It is currently {weather.weatherTemperature} ° C, {weather.weatherDescription}, {weather.hasPrecipitation ? <p>with precipitation</p>: <p>no precipitation</p>} in: {location}
+                It is currently {weather.weatherTemperature} ° C. {weather.weatherDescription}, {weather.hasPrecipitation ? <span className="bolded">with precipitation in {location}</span>: <span className="bolded">no precipitation in: {location}</span>}
             </h2>
             {weather && <Suggestions weather={weather} location={location}/>}
         </>

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
+import "./Suggestions.css"
 
 export default function Suggestions({ weather, location }) {
+    const baseURL = import.meta.env.VITE_DOMAIN;
     const [suggestions, setSuggestions] = useState(null);
     
     useEffect(() => {
         async function fetchInfo() {
             if (weather && Object.keys(weather).length !== 0 && location && Object.keys(location).length !== 0) {
                 try {
-                    const response = await fetch('http://127.0.0.1:5000/obtainSuggestions/', {
+                    const response = await fetch(`${baseURL}/obtainSuggestions/`, {
                         method: 'POST',
                         mode: "cors",
                         headers: {
@@ -34,16 +36,15 @@ export default function Suggestions({ weather, location }) {
     }, [weather]); // Include weather in the dependency array to run the effect when weather changes
 
     return (
-    <>
+    <div className="suggestion-dropdown" style={{ maxHeight: "400px", overflowY: "auto" }}>
         <h2>Suggestions:</h2>
         {suggestions === null ? (
             <p>Loading suggestions...</p>
         ) : (
             suggestions.map((suggestion, index) => (
-                <p key={index}>{suggestion}</p>
+                <p className="suggestion-key" key={index}>{suggestion}</p>
             ))
         )}
-    </>
-
+    </div>
     )
 }

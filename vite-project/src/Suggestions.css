@@ -1,0 +1,29 @@
+/* Base styles */
+.suggestion-dropdown {
+    margin-left: 15%;
+    margin-right: 15%;
+    animation: pop-up 2.0s ease forwards;
+}
+
+.suggestion-key {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .suggestion-dropdown {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}

@@ -4,6 +4,7 @@ import Searchbar from './Searchbar';
 import Prompt from './Prompt'; // Assuming this is the correct import path for the Prompt component
 
 function App() {
+  const baseURL = import.meta.env.VITE_DOMAIN;
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(''); // State to store the selected location
@@ -11,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/userData/', {
+        const response = await fetch(`${baseURL}/userData/`, {
           method: 'GET',
           headers: {
             'content-type': 'application/json',
@@ -40,8 +41,11 @@ function App() {
   };
   
   return (
-    <div className="App">
-      <h1>WeatherWardrobe</h1>
+    <div className="App container">
+      <a href="/">
+      <img src="wwlogo.svg" className='logo' alt="" />
+      </a>
+      <h1 className='title'>WeatherWardrobe</h1>
       {!selectedLocation && <Searchbar data={data} onSelectLocation={handleSelectLocation} /> }{/* Pass onSelectLocation function to SearchBar */}
       {selectedLocation && <Prompt location={selectedLocation} />} {/* Pass selectedLocation state to Prompt */}
       {error && <p>Error: {error}</p>}
